@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\StockDataWeb; // Import your model
 
 class DashboardController extends Controller
 {
@@ -62,4 +63,10 @@ class DashboardController extends Controller
     {
         //
     }
+    public function dashboard()
+{
+    $stockData = StockDataWeb::all(); // Retrieve all data from the stock_data_web table
+
+    return view('dashboard', compact('stockData')); // Pass the data to the view
+}
 }
