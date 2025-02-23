@@ -7,6 +7,7 @@ use App\Http\Controllers\StockDataController;
 use App\Http\Controllers\WarehouseController;
  use App\Http\Controllers\ProductController;
  use App\Http\Controllers\StudentController;
+ use App\Http\Controllers\CustomerController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -32,9 +33,15 @@ require __DIR__.'/auth.php';
 Route::get('/product',[ProductController::class,'index'])->name('product.index');
 Route::get('/product/create',[ProductController::class,'create'])->name('product.create');
 Route::post('/product',[ProductController::class,'store'])->name('product.store');
+Route::get('/product/{product}/edit',[ProductController::class,'edit'])->name('product.edit');
+Route::put('/product/{product}', [ProductController::class, 'update'])->name('product.update');
+Route::delete('/product/{product}/destroy', [ProductController::class, 'destroy'])->name('product.destroy');
 
 Route::get('/students',[StudentController::class,'index'])->name('student.index');
 Route::get('/students/create',[StudentController::class,'create'])->name('student.create');
 Route::post('/students',[StudentController::class,'store'])->name('student.store');
 
-
+Route::get('/customers',[CustomerController::class,'index'])->name('customer.index');
+Route::get('/customers/create',[CustomerController::class,'create'])->name('customer.create');
+Route::post('/customers',[CustomerController::class,'store'])->name('customer.store');
+Route::get('/customers',[CustomerController::class,'store'])->name('customer.store');
