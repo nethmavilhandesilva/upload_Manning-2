@@ -32,4 +32,23 @@ class StudentController extends Controller
        // Redirect with a success message
        return redirect()->route('student.index')->with('success', 'Student added successfully!');
    }
+   public function edit(Student $student)
+    {
+        return view('students.edit', ['student' => $student]);
+    }
+    public function update(Student $student, Request $request){
+        $data = $request->validate([
+            'Name'=>'required',
+            'Addmission_No'=>'required|numeric',
+            'Age'=>'required|numeric',
+        ]);
+        $student->update($data);
+        return redirect(route('student.index'))->with('success','Student Updated Successffully');
+    }
+    public function destroy(Student $student){
+        $student->delete();
+        return redirect(route('student.index'))->with('success','Student Deleted Successffully');
+    }
+
+
 }

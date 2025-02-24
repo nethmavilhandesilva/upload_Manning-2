@@ -40,8 +40,14 @@ Route::delete('/product/{product}/destroy', [ProductController::class, 'destroy'
 Route::get('/students',[StudentController::class,'index'])->name('student.index');
 Route::get('/students/create',[StudentController::class,'create'])->name('student.create');
 Route::post('/students',[StudentController::class,'store'])->name('student.store');
+Route::delete('/student/{student}', [StudentController::class, 'destroy'])->name('student.destroy');
+Route::get('/students/{student}/edit',[StudentController::class,'edit'])->name('student.edit');
+Route::put('/student/{student}',[StudentController::class,'update'])->name('student.update');
+
 
 Route::get('/customers',[CustomerController::class,'index'])->name('customer.index');
 Route::get('/customers/create',[CustomerController::class,'create'])->name('customer.create');
 Route::post('/customers',[CustomerController::class,'store'])->name('customer.store');
-Route::get('/customers',[CustomerController::class,'store'])->name('customer.store');
+Route::delete('/customers/{customer}',[CustomerController::class,'destroy'])->name('customer.destroy');
+Route::get('/customers/{customer}/edit',[CustomerController::class,'edit'])->name('customer.edit');
+Route::put('/customer/{customer}',[CustomerController::class,'update'])->name('customer.update');

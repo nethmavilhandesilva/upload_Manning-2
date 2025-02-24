@@ -14,6 +14,9 @@
             <th>Name</th>
             <th>Addmission_No</th>
             <th>Age</th>
+            <th>Edit</th>
+            <th>Delete</th>
+           
         </tr>
         @foreach($students as $student)
        
@@ -22,10 +25,18 @@
             <td>{{$student->Name}}</td>
             <td>{{$student->Addmission_No}}</td>
             <td>{{$student->Age}}</td>
-          
-            
-
-        </tr>
+            <td>
+                    <a href="{{ route('student.edit', ['student' => $student]) }}">Edit</a>
+                </td>
+            <td>
+                <form method="post" action="{{ route('student.destroy',$student) }}">
+                @csrf
+                @method('delete')
+                <input type="submit" value="Delete"/>
+                </form>
+            </td>
+      </tr>
+      
       @endforeach
     </div>
 </body>
